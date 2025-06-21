@@ -1,0 +1,315 @@
+{
+  "app": {
+    "title": "Dr White Group",
+    "description": "Your trusted partner for travel, education, and international trade services"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "travel": "Travel Services",
+    "education": "Education",
+    "trade": "Import/Export",
+    "contact": "Contact Us",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mobileMenu": "Mobile navigation menu"
+  },
+  "hero": {
+    "chip": "Excellence",
+    "title": "Dr White Group: Your Gateway to Global Opportunities",
+    "subtitle": "Comprehensive travel, education, and international trade services connecting you to the world.",
+    "cta": "Explore Our Services"
+  },
+  "services": {
+    "chip": "Our Services",
+    "title": "Comprehensive Solutions for Your Global Needs",
+    "subtitle": "From travel and education to international trade, we provide expert services to connect you with opportunities worldwide.",
+    "travel": {
+      "title": "Travel Services",
+      "description": "Professional travel arrangements including flight bookings to Gulf countries and comprehensive Hajj & Umrah services.",
+      "features": [
+        "Flight bookings to Gulf countries",
+        "Hajj & Umrah packages",
+        "Visa assistance",
+        "Travel insurance",
+        "Group travel arrangements"
+      ]
+    },
+    "education": {
+      "title": "Education Consulting",
+      "description": "Expert guidance for studying abroad, specializing in Central Asian countries including Tajikistan, Kyrgyzstan, and Uzbekistan.",
+      "features": [
+        "University application assistance",
+        "Visa and documentation support",
+        "Scholarship guidance",
+        "Pre-departure orientation",
+        "Ongoing student support"
+      ]
+    },
+    "trade": {
+      "title": "Import/Export Consulting",
+      "description": "Complete trade solutions for Egyptian fruit exports to Russia and Gulf countries, with quality monitoring and market analysis.",
+      "features": [
+        "Export planning & documentation",
+        "Quality monitoring for Egyptian fruits",
+        "Market analysis & buyer connections",
+        "Shipping & customs clearance",
+        "Business partnerships facilitation"
+      ]
+    }
+  },
+  "testimonials": {
+    "chip": "Client Success Stories",
+    "title": "What Our Clients Say",
+    "items": [
+      {
+        "content": "Dr White Group made our Hajj journey seamless and spiritually fulfilling. Their attention to detail and professional service exceeded our expectations.",
+        "author": "Ahmed Al-Rashid",
+        "role": "Satisfied Pilgrim, UAE"
+      },
+      {
+        "content": "Thanks to their education consulting, my son is now studying medicine in Kyrgyzstan. The support from application to arrival was exceptional.",
+        "author": "Fatima Hassan",
+        "role": "Parent, Egypt"
+      },
+      {
+        "content": "Our fruit export business to Russia doubled after partnering with Dr White Group. Their market knowledge and connections are invaluable.",
+        "author": "Mohamed Abdel Rahman",
+        "role": "Fruit Exporter, Egypt"
+      },
+      {
+        "content": "The team helped us establish reliable supply chains for Egyptian citrus. Their quality monitoring ensures we receive only the best products.",
+        "author": "Dmitri Volkov",
+        "role": "Import Manager, Moscow"
+      }
+    ]
+  },
+  "newsletter": {
+    "chip": "Stay Connected",
+    "title": "Subscribe to Our Newsletter",
+    "subtitle": "Get the latest updates on travel deals, education opportunities, and market insights",
+    "placeholder": "Email address",
+    "submit": "Subscribe",
+    "submitting": "Subscribing...",
+    "success": "Thank you for subscribing!",
+    "description": "You'll receive valuable updates and exclusive offers.",
+    "error": "Please enter your email address"
+  },
+  "about": {
+    "chip": "About Us",
+    "title": "Dr White Group",
+    "subtitle": "Your trusted partner for global opportunities",
+    "description": "Dr White Group is a leading multi-service company specializing in travel, education, and international trade. We serve both Egyptian farmers seeking global expansion and international buyers looking for reliable suppliers, ensuring a seamless, profitable, and professional experience.",
+    "experience": "Years of Experience:",
+    "clients": "Satisfied Clients:",
+    "countries": "Countries Served:",
+    "success": "Success Rate:"
+  },
+  "contact": {
+    "chip": "Get in Touch",
+    "title": "Contact Us Today",
+    "subtitle": "Ready to explore global opportunities? Let's discuss how we can help you achieve your goals.",
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "service": "Service of interest",
+      "message": "Message",
+      "submit": "Send Message",
+      "success": "Message sent successfully!",
+      "error": "Please fill in all required fields"
+    },
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Business Hours"
+    }
+  },
+  "whyChooseUs": {
+    "chip": "Why Choose Us",
+    "title": "Why Dr White Group?",
+    "card1": {
+      "chip": "Expertise",
+      "title": "Decades of combined experience in travel, education, and international trade"
+    },
+    "card2": {
+      "chip": "Global Network",
+      "title": "Established connections across Gulf countries, Central Asia, and Russia"
+    },
+    "card3": {
+      "chip": "Comprehensive Service",
+      "title": "End-to-end solutions from planning to execution and ongoing support"
+    }
+  },
+  "mission": {
+    "chip": "Our Mission",
+    "title": "Dr White Group bridges cultures and creates opportunities. We specialize in connecting people with their dreams - whether it's a spiritual journey, educational advancement, or business expansion across international markets."
+  },
+  "footer": {
+    "description": "Dr White Group - Your gateway to global opportunities in travel, education, and international trade.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "contact": "Contact Info",
+    "followUs": "Follow Us",
+    "rights": "© 2025 Dr White Group. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Oops! Page not found",
+    "cta": "Return to Home"
+  },
+  "centralAsia": {
+    "chip": "Central Asia Destinations",
+    "title": "Trips to All Central Asian Countries",
+    "subtitle": "Discover the beauty and culture of Central Asian countries with our specialized services",
+    "countries": [
+      {
+        "name": "Kyrgyzstan",
+        "description": "Kyrgyzstan is a country whose cities, including the capital Bishkek, have low crime rates comparable to European capitals, while its mountainous countryside is home to some of the friendliest people.",
+        "flag": "🇰🇬"
+      },
+      {
+        "name": "Uzbekistan",
+        "description": "Uzbekistan is a country located in Central Asia. Its capital and largest city is Tashkent. It has a population of approximately 34.8 million people, according to 2023 estimates. Its neighboring countries are Afghanistan, Kazakhstan, Kyrgyzstan, Tajikistan, and Turkmenistan.",
+        "flag": "🇺🇿"
+      },
+      {
+        "name": "Tajikistan",
+        "description": "Tajikistan is a country located in Central Asia, surrounded by Afghanistan, China, Kyrgyzstan, and Uzbekistan. It is famous for its rugged mountains, which are an ideal destination for long-distance hiking and mountain climbing. The Fan Mountains are located near the national capital Dushanbe.",
+        "flag": "🇹🇯"
+      }
+    ]
+  },
+  "gulfCountries": {
+    "chip": "Gulf Destinations",
+    "title": "Explore the Gulf Countries with Us",
+    "subtitle": "Distinctive trips to the most beautiful Gulf Arab countries with the best services",
+    "countries": [
+      {
+        "name": "United Arab Emirates",
+        "description": "The United Arab Emirates, or simply the UAE, is a country located in West Asia, in the Middle East. It is located at the eastern tip of the Arabian Peninsula, sharing borders with Oman and Saudi Arabia, as well as maritime borders in the Arabian Gulf with Qatar and Iran.",
+        "flag": "🇦🇪"
+      },
+      {
+        "name": "Kingdom of Saudi Arabia",
+        "description": "The Kingdom of Saudi Arabia, officially the Kingdom of Saudi Arabia, is a country located in West Asia and the Middle East. It covers most of the Arabian Peninsula, with an area of approximately 2,150,000 square kilometers, making it the fifth largest country in Asia and the largest country in the Middle East.",
+        "flag": "🇸🇦"
+      },
+      {
+        "name": "Oman",
+        "description": "Oman, officially the Sultanate of Oman, is a country located in West Asia. It is located on the southeastern coast of the Arabian Peninsula, extending along the Arabian Gulf. It shares land borders with Saudi Arabia, the United Arab Emirates, and Yemen.",
+        "flag": "🇴🇲"
+      }
+    ]
+  },
+  "language": {
+    "select": "Select Language",
+    "english": "English",
+    "arabic": "Arabic"
+  },
+  "aboutPage": {
+    "title": "About Us - Dr White Group",
+    "hero": {
+      "title": "About Us",
+      "subtitle": "Your trusted partner for global opportunities",
+      "description": "Dr White Group is a leading multi-service company that bridges cultures and creates global opportunities in travel, education, and international trade."
+    },
+    "story": {
+      "chip": "Our Story",
+      "title": "A Journey from Vision to Reality",
+      "content": "Dr White Group was founded with a clear vision: to connect people with their dreams and provide a trusted bridge to global opportunities. Since our inception, we have successfully helped thousands of clients achieve their goals, whether it's a spiritual journey for Hajj and Umrah, an educational path abroad, or business expansion across international borders."
+    },
+    "vision": {
+      "chip": "Our Vision",
+      "title": "To be the premier bridge connecting local aspirations with global opportunities",
+      "description": "We strive to be the first and most trusted partner for individuals and companies seeking global expansion, by providing exceptional and integrated services that ensure a smooth and fruitful experience."
+    },
+    "mission": {
+      "chip": "Our Mission",
+      "title": "Empowering our clients to access global opportunities with confidence and ease",
+      "description": "We provide comprehensive and customized solutions in travel, education, and international trade, backed by deep expertise and an extensive network of relationships spanning continents."
+    },
+    "values": {
+      "chip": "Our Values",
+      "title": "The Values That Guide Us",
+      "items": [
+        {
+          "title": "Trust & Transparency",
+          "description": "We build long-term relationships with our clients through honesty and clarity in all our dealings"
+        },
+        {
+          "title": "Excellence & Quality",
+          "description": "We always strive to deliver the highest levels of service and quality in everything we do"
+        },
+        {
+          "title": "Innovation & Development",
+          "description": "We stay current with the latest developments and innovate new solutions to meet our clients' evolving needs"
+        },
+        {
+          "title": "True Partnership",
+          "description": "We consider ourselves true partners to our clients in their journey toward achieving their goals"
+        }
+      ]
+    },
+    "team": {
+      "chip": "Our Team",
+      "title": "Specialized Experts at Your Service",
+      "description": "Our team includes a select group of experts specialized in travel, education, and international trade, with years of experience in local and global markets.",
+      "members": [
+        {
+          "name": "Dr. Mohamed White",
+          "position": "Founder & CEO",
+          "description": "Over 20 years of experience in international trade and logistics services"
+        },
+        {
+          "name": "Ahmed El-Sayed",
+          "position": "Travel Services Manager",
+          "description": "Specialist in organizing Hajj and Umrah trips and travel to Gulf countries"
+        },
+        {
+          "name": "Fatima Hassan",
+          "position": "Education Consulting Manager",
+          "description": "Expert in international education and studying in Central Asia"
+        }
+      ]
+    },
+    "achievements": {
+      "chip": "Our Achievements",
+      "title": "Numbers That Speak of Our Success",
+      "stats": [
+        {
+          "number": "15+",
+          "label": "Years of Experience"
+        },
+        {
+          "number": "500+",
+          "label": "Satisfied Clients"
+        },
+        {
+          "number": "10+",
+          "label": "Countries Served"
+        },
+        {
+          "number": "98%",
+          "label": "Client Satisfaction Rate"
+        },
+        {
+          "number": "1000+",
+          "label": "Hajj & Umrah Trips"
+        },
+        {
+          "number": "200+",
+          "label": "Students Abroad"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Start Your Journey with Us?",
+      "description": "Join hundreds of clients who have trusted us to achieve their global goals",
+      "button": "Contact Us Now"
+    }
+  }
+}
