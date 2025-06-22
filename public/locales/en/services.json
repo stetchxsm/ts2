@@ -1,0 +1,141 @@
+{
+  "services": {
+    "chip": "Our Services",
+    "title": "Comprehensive Solutions for Your Global Needs",
+    "subtitle": "From travel and education to international trade, we provide expert services to connect you with opportunities worldwide.",
+    "travel": {
+      "title": "Travel Services",
+      "description": "Professional travel arrangements including flight bookings to Gulf countries and comprehensive Hajj & Umrah services.",
+      "features": [
+        "Flight bookings to Gulf countries",
+        "Hajj & Umrah packages",
+        "Visa assistance",
+        "Travel insurance",
+        "Group travel arrangements"
+      ]
+    },
+    "education": {
+      "title": "Education Consulting",
+      "description": "Expert guidance for studying abroad, specializing in Central Asian countries including Tajikistan, Kyrgyzstan, and Uzbekistan.",
+      "features": [
+        "University application assistance",
+        "Visa and documentation support",
+        "Scholarship guidance",
+        "Pre-departure orientation",
+        "Ongoing student support"
+      ]
+    },
+    "trade": {
+      "title": "Import/Export Consulting",
+      "description": "Complete trade solutions for Egyptian fruit exports to Russia and Gulf countries, with quality monitoring and market analysis.",
+      "features": [
+        "Export planning & documentation",
+        "Quality monitoring for Egyptian fruits",
+        "Market analysis & buyer connections",
+        "Shipping & customs clearance",
+        "Business partnerships facilitation"
+      ]
+    }
+  },
+  "testimonials": {
+    "chip": "Client Success Stories",
+    "title": "What Our Clients Say",
+    "items": [
+      {
+        "content": "Dr White Group made our Hajj journey seamless and spiritually fulfilling. Their attention to detail and professional service exceeded our expectations.",
+        "author": "Ahmed Al-Rashid",
+        "role": "Satisfied Pilgrim, UAE"
+      },
+      {
+        "content": "Thanks to their education consulting, my son is now studying medicine in Kyrgyzstan. The support from application to arrival was exceptional.",
+        "author": "Fatima Hassan",
+        "role": "Parent, Egypt"
+      },
+      {
+        "content": "Our fruit export business to Russia doubled after partnering with Dr White Group. Their market knowledge and connections are invaluable.",
+        "author": "Mohamed Abdel Rahman",
+        "role": "Fruit Exporter, Egypt"
+      },
+      {
+        "content": "The team helped us establish reliable supply chains for Egyptian citrus. Their quality monitoring ensures we receive only the best products.",
+        "author": "Dmitri Volkov",
+        "role": "Import Manager, Moscow"
+      }
+    ]
+  },
+  "newsletter": {
+    "chip": "Stay Connected",
+    "title": "Subscribe to Our Newsletter",
+    "subtitle": "Get the latest updates on travel deals, education opportunities, and market insights",
+    "placeholder": "Email address",
+    "submit": "Subscribe",
+    "submitting": "Subscribing...",
+    "success": "Thank you for subscribing!",
+    "description": "You'll receive valuable updates and exclusive offers.",
+    "error": "Please enter your email address"
+  },
+  "whyChooseUs": {
+    "chip": "Why Choose Us",
+    "title": "Why Dr White Group?",
+    "card1": {
+      "chip": "Expertise",
+      "title": "Decades of combined experience in travel, education, and international trade"
+    },
+    "card2": {
+      "chip": "Global Network",
+      "title": "Established connections across Gulf countries, Central Asia, and Russia"
+    },
+    "card3": {
+      "chip": "Comprehensive Service",
+      "title": "End-to-end solutions from planning to execution and ongoing support"
+    }
+  },
+  "mission": {
+    "chip": "Our Mission",
+    "title": "Dr White Group bridges cultures and creates opportunities. We specialize in connecting people with their dreams - whether it's a spiritual journey, educational advancement, or business expansion across international markets."
+  },
+  "centralAsia": {
+    "chip": "Central Asia Destinations",
+    "title": "Trips to All Central Asian Countries",
+    "subtitle": "Discover the beauty and culture of Central Asian countries with our specialized services",
+    "countries": [
+      {
+        "name": "Kyrgyzstan",
+        "description": "Kyrgyzstan is a country whose cities, including the capital Bishkek, have low crime rates comparable to European capitals, while its mountainous countryside is home to some of the friendliest people.",
+        "flag": "🇰🇬"
+      },
+      {
+        "name": "Uzbekistan",
+        "description": "Uzbekistan is a country located in Central Asia. Its capital and largest city is Tashkent. It has a population of approximately 34.8 million people, according to 2023 estimates. Its neighboring countries are Afghanistan, Kazakhstan, Kyrgyzstan, Tajikistan, and Turkmenistan.",
+        "flag": "🇺🇿"
+      },
+      {
+        "name": "Tajikistan",
+        "description": "Tajikistan is a country located in Central Asia, surrounded by Afghanistan, China, Kyrgyzstan, and Uzbekistan. It is famous for its rugged mountains, which are an ideal destination for long-distance hiking and mountain climbing. The Fan Mountains are located near the national capital Dushanbe.",
+        "flag": "🇹🇯"
+      }
+    ]
+  },
+  "gulfCountries": {
+    "chip": "Gulf Destinations",
+    "title": "Explore the Gulf Countries with Us",
+    "subtitle": "Distinctive trips to the most beautiful Gulf Arab countries with the best services",
+    "countries": [
+      {
+        "name": "United Arab Emirates",
+        "description": "The United Arab Emirates, or simply the UAE, is a country located in West Asia, in the Middle East. It is located at the eastern tip of the Arabian Peninsula, sharing borders with Oman and Saudi Arabia, as well as maritime borders in the Arabian Gulf with Qatar and Iran.",
+        "flag": "🇦🇪"
+      },
+      {
+        "name": "Kingdom of Saudi Arabia",
+        "description": "The Kingdom of Saudi Arabia, officially the Kingdom of Saudi Arabia, is a country located in West Asia and the Middle East. It covers most of the Arabian Peninsula, with an area of approximately 2,150,000 square kilometers, making it the fifth largest country in Asia and the largest country in the Middle East.",
+        "flag": "🇸🇦"
+      },
+      {
+        "name": "Oman",
+        "description": "Oman, officially the Sultanate of Oman, is a country located in West Asia. It is located on the southeastern coast of the Arabian Peninsula, extending along the Arabian Gulf. It shares land borders with Saudi Arabia, the United Arab Emirates, and Yemen.",
+        "flag": "🇴🇲"
+      }
+    ]
+  }
+}

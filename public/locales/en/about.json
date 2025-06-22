@@ -1,0 +1,189 @@
+{
+  "hero": {
+    "chip": "About Dr White Group",
+    "title": "Connecting Dreams with Destinations",
+    "subtitle": "Your trusted partner in travel, education, and international trade since our founding. We bridge cultures and create opportunities across Central Asia and the Gulf region.",
+    "cta": "Discover Our Story"
+  },
+  "owner": {
+    "chip": "Leadership",
+    "title": "Meet Our Founder",
+    "name": "Dr. White",
+    "position": "Founder & CEO",
+    "biography": "With over two decades of experience in international business and education, Dr. White founded our company with a vision to connect Central Asia with global opportunities. His expertise in cross-cultural communication and deep understanding of regional markets has made Dr White Group a trusted name in travel, education, and trade services.",
+    "vision": "To create bridges between cultures and provide exceptional service that transforms dreams into reality.",
+    "experience": "20+ Years Experience",
+    "countries": "15+ Countries Served",
+    "students": "5000+ Students Helped"
+  },
+  "story": {
+    "chip": "Our Journey",
+    "title": "Building Bridges Across Continents",
+    "founding": {
+      "year": "Founded",
+      "description": "Dr White Group was established with a mission to provide comprehensive travel, education, and trade services connecting Central Asia with the world."
+    },
+    "growth": {
+      "title": "Expanding Horizons",
+      "description": "From our headquarters in Bishkek, we've grown to serve clients across multiple countries, establishing partnerships and networks that span continents."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To provide exceptional, personalized services that help individuals and businesses achieve their international goals while maintaining the highest standards of integrity and professionalism."
+    }
+  },
+  "office": {
+    "chip": "Global Presence",
+    "title": "Our Headquarters & Global Network",
+    "main": {
+      "title": "Main Office",
+      "address": "Bishkek, Kyrgyzstan",
+      "street": "Oktyabrsky District, Maxim Gorky Street 21",
+      "description": "Our headquarters in the heart of Central Asia, strategically positioned to serve the region's growing international needs."
+    },
+    "global": {
+      "title": "Worldwide Reach",
+      "description": "With branches and trusted agents worldwide, we provide seamless service across continents.",
+      "coverage": "Global Coverage",
+      "agents": "Trusted Agents Worldwide",
+      "support": "24/7 Support"
+    }
+  },
+  "guarantees": {
+    "chip": "Our Commitments",
+    "title": "Enhanced Service Guarantees",
+    "subtitle": "Our comprehensive commitment to delivering exceptional and reliable services",
+    "items": [
+      {
+        "title": "Absolute Quality Assurance",
+        "description": "We guarantee the highest quality standards in all our services with meticulous attention to detail, from visa processing to educational placements and business services."
+      },
+      {
+        "title": "Complete Pricing Transparency",
+        "description": "Full commitment to no hidden fees or financial surprises. All costs are clearly defined from the beginning with comprehensive breakdown of every service."
+      },
+      {
+        "title": "Strict Deadline Adherence",
+        "description": "We respect your time and commit to agreed deadlines with precise tracking systems to ensure all services are delivered on schedule."
+      },
+      {
+        "title": "Specialized Personal Support",
+        "description": "Dedicated team for each client providing personalized consultations and continuous support tailored specifically to your individual needs and circumstances."
+      },
+      {
+        "title": "Goal Achievement Guarantee",
+        "description": "Strong commitment to your success with alternative plans and continuous follow-up to ensure achievement of your goals in travel, education, or business ventures."
+      },
+      {
+        "title": "Lifetime Ongoing Support",
+        "description": "Long-term relationship extending beyond initial service delivery, with continuous support and free consultations to ensure your continued success."
+      },
+      {
+        "title": "Security and Privacy Guarantee",
+        "description": "Complete protection of your personal and financial data with highest digital security standards and total confidentiality in all transactions."
+      },
+      {
+        "title": "Rapid Response Guarantee",
+        "description": "Commitment to respond to all inquiries within 24 hours maximum, with 24/7 support team available for urgent cases."
+      }
+    ]
+  },
+  "disclaimer": {
+    "chip": "Disclaimer",
+    "title": "Important Notice - Disclaimer",
+    "subtitle": "Important information about official dealings with Dr White Group",
+    "content": {
+      "warning": {
+        "title": "Important Warning",
+        "text": "Dr White Group deals exclusively through official channels mentioned on this website only."
+      },
+      "official_channels": {
+        "title": "Authorized Official Channels",
+        "items": [
+          "Official Website: drwhitegroup.com",
+          "Main Office: Bishkek, Kyrgyzstan, Oktyabrsky District, Maxim Gorky Street 21",
+          "Phone numbers listed in the contact section of the website",
+          "Official email addresses listed on the website",
+          "Official social media accounts linked to the website"
+        ]
+      },
+      "non_responsibility": {
+        "title": "Non-Responsibility",
+        "items": [
+          "We bear no responsibility for dealings with any persons or entities not officially mentioned on this website",
+          "We are not responsible for any services or promises made by unauthorized intermediaries",
+          "We do not guarantee the accuracy or legitimacy of any information provided by unofficial external sources",
+          "We bear no responsibility for any financial or legal damages resulting from dealings with unauthorized parties"
+        ]
+      },
+      "verification": {
+        "title": "Identity Verification",
+        "text": "To ensure you are dealing with our official representatives, please contact us directly through the channels mentioned above to verify the identity of anyone claiming to represent the company."
+      },
+      "legal_action": {
+        "title": "Legal Action",
+        "text": "We will take necessary legal action against any person or entity using the company name illegally or providing services in our name without official authorization."
+      }
+    }
+  },
+  "success": {
+    "chip": "Success Stories",
+    "title": "Student Success Stories",
+    "subtitle": "Real stories from students who achieved their dreams with our guidance",
+    "stories": [
+      {
+        "name": "Aida K.",
+        "country": "Kyrgyzstan",
+        "achievement": "Medical Studies in Turkey",
+        "quote": "Dr White Group made my dream of studying medicine abroad a reality. Their support was invaluable throughout the entire process.",
+        "year": "2023"
+      },
+      {
+        "name": "Omar S.",
+        "country": "Uzbekistan",
+        "achievement": "Engineering Degree in UAE",
+        "quote": "Professional service and genuine care. They guided me every step of the way to my engineering program in Dubai.",
+        "year": "2023"
+      },
+      {
+        "name": "Fatima A.",
+        "country": "Tajikistan",
+        "achievement": "Business Studies in Qatar",
+        "quote": "Excellent support from application to arrival. Now I'm pursuing my MBA in Doha thanks to their expertise.",
+        "year": "2024"
+      }
+    ],
+    "stats": {
+      "students": "5000+",
+      "studentsLabel": "Students Placed",
+      "countries": "15+",
+      "countriesLabel": "Destination Countries",
+      "success": "98%",
+      "successLabel": "Success Rate",
+      "satisfaction": "99%",
+      "satisfactionLabel": "Client Satisfaction"
+    }
+  },
+  "values": {
+    "chip": "Our Values",
+    "title": "What Drives Us",
+    "items": [
+      {
+        "title": "Integrity",
+        "description": "We conduct business with the highest ethical standards and transparency."
+      },
+      {
+        "title": "Excellence",
+        "description": "We strive for excellence in every service we provide, exceeding expectations."
+      },
+      {
+        "title": "Cultural Sensitivity",
+        "description": "We respect and celebrate the diverse cultures we serve, bridging differences with understanding."
+      },
+      {
+        "title": "Innovation",
+        "description": "We continuously improve our services using the latest technology and best practices."
+      }
+    ]
+  }
+}

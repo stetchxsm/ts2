@@ -1,0 +1,66 @@
+{
+  "contact": {
+    "chip": "Contact Us",
+    "title": "Contact Us Today",
+    "subtitle": "Ready to explore global opportunities? Let's discuss how we can help you achieve your goals.",
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "service": "Service of interest",
+      "message": "Message",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Please fill in all required fields",
+      "selectService": "Select a service",
+      "services": {
+        "travel": "Travel Services",
+        "education": "Education Consulting",
+        "trade": "Import/Export",
+        "general": "General Inquiry"
+      },
+      "placeholders": {
+        "name": "Enter your full name",
+        "email": "Enter your email address",
+        "message": "Write your message here..."
+      }
+    },
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Business Hours",
+      "hoursValue": "Mon - Fri: 9:00 AM - 6:00 PM",
+      "mainOffice": "Main Office - Kyrgyzstan",
+      "addressValue": "Bishkek, Oktyabrsky District, Maxim Gorky Street 21",
+      "branches": "Branches & Agents",
+      "branchesValue": "We have branches and agents worldwide"
+    },
+    "contactInfoTitle": "Contact Information",
+    "sendMessageTitle": "Send us a message",
+    "mapTitle": "Location Map",
+    "description": "We're here to help you achieve your global goals. Contact us today and let's discuss how we can serve you.",
+    "globalPresence": {
+      "title": "Our Global Presence",
+      "subtitle": "We serve our clients through an extensive network of offices and agents worldwide",
+      "regions": [
+        {
+          "name": "Central Asia",
+          "countries": "Kyrgyzstan, Kazakhstan, Uzbekistan, Tajikistan, Turkmenistan"
+        },
+        {
+          "name": "Middle East",
+          "countries": "Egypt, Saudi Arabia, UAE, Kuwait, Qatar, Bahrain"
+        },
+        {
+          "name": "North Africa",
+          "countries": "Morocco, Tunisia, Algeria, Libya, Sudan"
+        },
+        {
+          "name": "Europe",
+          "countries": "Turkey, Germany, France, Italy, Spain"
+        }
+      ]
+    }
+  }
+}

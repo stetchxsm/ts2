@@ -1,649 +1,531 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  MapPin, Phone, Mail, Clock, Send, CheckCircle, Globe, Users,
-  Award, Headphones, X, Loader2
-} from "lucide-react";
-import { cn } from "@/lib/utils";
+import { MapPin, Phone, Mail, Clock, Send, ChevronDown, ChevronUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ArabicText from "@/components/ArabicText";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { toast } from "@/components/ui/use-toast";
+import { cn } from "@/lib/utils";
 
-// Types
-interface ContactInfo {
-  icon: React.ElementType;
-  label: string;
-  value: string;
-  color: string;
-}
-
-interface Feature {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-}
-
-const Contact: React.FC = () => {
-  const { t, i18n } = useTranslation();
+const Contact = () => {
+  const { t, i18n } = useTranslation(['contact', 'faq']);
   const isRTL = i18n.dir() === 'rtl';
 
-  // Form state
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-
-  // Animation setup
+  // Ensure page starts from top
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const animatableElements = document.querySelectorAll('.animate-on-scroll');
-    animatableElements.forEach((element) => observer.observe(element));
-
-    return () => {
-      animatableElements.forEach((element) => observer.unobserve(element));
-      observer.disconnect();
-    };
+    window.scrollTo(0, 0);
   }, []);
 
-  // Reset animations when language changes
-  useEffect(() => {
-    const resetAnimations = () => {
-      const animatedElements = document.querySelectorAll('.animate-on-scroll');
-      animatedElements.forEach((element) => {
-        element.classList.remove('animate-fade-in');
-        // Force reflow
-        void (element as HTMLElement).offsetHeight;
-        element.classList.add('animate-fade-in');
-      });
-    };
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    service: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
-    const timer = setTimeout(resetAnimations, 100);
-    return () => clearTimeout(timer);
-  }, [i18n.language]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // Form validation
-      if (!formData.name || !formData.email || !formData.service) {
-        throw new Error('Missing required fields');
-      }
-
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-
-      // Reset status after 5 seconds
-      setTimeout(() => setSubmitStatus('idle'), 5000);
-    } catch (error) {
-      setSubmitStatus('error');
-      console.error("Form submission error:", error);
-
-      // Reset error status after 5 seconds
-      setTimeout(() => setSubmitStatus('idle'), 5000);
-    } finally {
-      setIsSubmitting(false);
-    }
+  const toggleFAQ = (index: number) => {
+    setOpenFAQ(openFAQ === index ? null : index);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [field]: value
     }));
   };
 
-  const contactInfo: ContactInfo[] = [
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validate form
+    if (!formData.name || !formData.email || !formData.service || !formData.message) {
+      toast({
+        title: t('contact.form.error'),
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    // Simulate API call
+    setTimeout(() => {
+      toast({
+        title: t('contact.form.success'),
+        description: t('contact.form.success')
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        service: "",
+        message: "",
+      });
+
+      setIsSubmitting(false);
+    }, 1500);
+  };
+
+  const contactInfo = [
     {
       icon: MapPin,
       label: t('contact.info.address'),
-      value: "Cairo, Egypt",
-      color: "bg-blue-100 text-blue-600"
+      value: isRTL ? "القاهرة، مصر" : "Cairo, Egypt",
+      href: "https://maps.google.com/?q=Cairo,Egypt"
     },
     {
       icon: Phone,
       label: t('contact.info.phone'),
       value: "+20 123 456 7890",
-      color: "bg-green-100 text-green-600"
+      href: "tel:+201234567890"
     },
     {
       icon: Mail,
       label: t('contact.info.email'),
       value: "info@drwhitegroup.com",
-      color: "bg-purple-100 text-purple-600"
+      href: "mailto:info@drwhitegroup.com"
     },
     {
       icon: Clock,
       label: t('contact.info.hours'),
-      value: "Sun - Thu: 9AM - 6PM",
-      color: "bg-orange-100 text-orange-600"
+      value: t('contact.info.hoursValue'),
+      href: null
     }
   ];
-
-  const features: Feature[] = [
-    {
-      icon: Globe,
-      title: isRTL ? "خدمات عالمية" : "Global Services",
-      description: isRTL ? "نخدم عملاءنا في أكثر من 10 دول حول العالم" : "We serve clients in over 10 countries worldwide"
-    },
-    {
-      icon: Users,
-      title: isRTL ? "فريق متخصص" : "Expert Team",
-      description: isRTL ? "فريق من الخبراء المتخصصين في مختلف المجالات" : "Team of experts specialized in various fields"
-    },
-    {
-      icon: Award,
-      title: isRTL ? "جودة معتمدة" : "Certified Quality",
-      description: isRTL ? "خدمات معتمدة وموثقة بأعلى معايير الجودة" : "Certified and documented services with highest quality standards"
-    },
-    {
-      icon: Headphones,
-      title: isRTL ? "دعم 24/7" : "24/7 Support",
-      description: isRTL ? "دعم فني متواصل على مدار الساعة" : "Continuous technical support around the clock"
-    }
-  ];
-
-  // Component for contact info card
-  const ContactInfoCard: React.FC<ContactInfo> = ({ icon: Icon, label, value, color }) => (
-    <div
-      className={cn(
-        "bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105",
-        activeSection === label ? "ring-2 ring-blue-500" : ""
-      )}
-      onClick={() => setActiveSection(label)}
-      role="button"
-      tabIndex={0}
-      aria-pressed={activeSection === label}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          setActiveSection(label);
-          e.preventDefault();
-        }
-      }}
-    >
-      <div className={cn("flex items-start", isRTL ? "space-x-reverse space-x-4" : "space-x-4")}>
-        <div className={cn("w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0", color)}>
-          <Icon className="w-7 h-7" />
-        </div>
-        <div className="flex-1">
-          <h3
-            className={cn(
-              "font-semibold text-gray-900 mb-2",
-              isRTL ? "font-arabic text-right" : "text-left"
-            )}
-            style={{
-              fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-            }}
-          >
-            {label}
-          </h3>
-          <p
-            className={cn(
-              "text-gray-600",
-              isRTL ? "font-arabic text-right" : "text-left"
-            )}
-            style={{
-              fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-            }}
-          >
-            {value}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-
-  // Component for feature card
-  const FeatureCard: React.FC<Feature & { index: number }> = ({ icon: Icon, title, description, index }) => {
-    return (
-      <div
-        key={title}
-        className="text-center opacity-0 animate-on-scroll"
-        style={{ animationDelay: `${0.6 + index * 0.1}s` }}
-      >
-        <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <Icon className="w-8 h-8 text-blue-600" />
-        </div>
-        <h3
-          className={cn(
-            "text-lg font-semibold text-gray-900 mb-2",
-            isRTL ? "font-arabic" : ""
-          )}
-          style={{
-            fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-          }}
-        >
-          {title}
-        </h3>
-        <p
-          className={cn(
-            "text-gray-600",
-            isRTL ? "font-arabic" : ""
-          )}
-          style={{
-            fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-          }}
-        >
-          {description}
-        </p>
-      </div>
-    );
-  };
-
-  // Component for form input
-  const FormInput: React.FC<{
-    id: string;
-    name: string;
-    type?: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    required?: boolean;
-    children?: React.ReactNode;
-  }> = ({ id, name, type = "text", value, onChange, required = false, children }) => (
-    <div>
-      <label
-        htmlFor={id}
-        className={cn(
-          "block text-sm font-medium text-gray-700 mb-2",
-          isRTL ? "font-arabic text-right" : "text-left"
-        )}
-        style={{
-          fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-        }}
-      >
-        {children}
-      </label>
-      <input
-        type={type}
-        id={id}
-        name={name}
-        value={value}
-        onChange={onChange}
-        required={required}
-        className={cn(
-          "w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300",
-          isRTL ? "text-right" : "text-left"
-        )}
-        style={{
-          fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-        }}
-      />
-    </div>
-  );
-
-  // Component for form select
-  const FormSelect: React.FC<{
-    id: string;
-    name: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    required?: boolean;
-    children: React.ReactNode;
-  }> = ({ id, name, value, onChange, required = false, children }) => (
-    <div>
-      <label
-        htmlFor={id}
-        className={cn(
-          "block text-sm font-medium text-gray-700 mb-2",
-          isRTL ? "font-arabic text-right" : "text-left"
-        )}
-        style={{
-          fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-        }}
-      >
-        {children}
-      </label>
-      <select
-        id={id}
-        name={name}
-        value={value}
-        onChange={onChange}
-        required={required}
-        className={cn(
-          "w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300",
-          isRTL ? "text-right" : "text-left"
-        )}
-        style={{
-          fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-        }}
-      >
-        <option value="">{isRTL ? "اختر الخدمة" : "Select a service"}</option>
-        <option value="travel">{isRTL ? "خدمات السفر" : "Travel Services"}</option>
-        <option value="education">{isRTL ? "الاستشارات التعليمية" : "Education Consulting"}</option>
-        <option value="trade">{isRTL ? "الاستيراد والتصدير" : "Import/Export"}</option>
-      </select>
-    </div>
-  );
-
-  // Component for form textarea
-  const FormTextArea: React.FC<{
-    id: string;
-    name: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-    required?: boolean;
-    rows?: number;
-    children?: React.ReactNode;
-  }> = ({ id, name, value, onChange, required = false, rows = 5, children }) => (
-    <div>
-      <label
-        htmlFor={id}
-        className={cn(
-          "block text-sm font-medium text-gray-700 mb-2",
-          isRTL ? "font-arabic text-right" : "text-left"
-        )}
-        style={{
-          fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-        }}
-      >
-        {children}
-      </label>
-      <textarea
-        id={id}
-        name={name}
-        value={value}
-        onChange={onChange}
-        rows={rows}
-        required={required}
-        className={cn(
-          "w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none",
-          isRTL ? "text-right" : "text-left"
-        )}
-        style={{
-          fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-        }}
-      />
-    </div>
-  );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2"></div>
-        </div>
-
-        <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="pt-20 md:pt-24 pb-12 md:pb-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-white/20"></div>
+        <div className="absolute top-0 left-0 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div className="absolute top-0 right-0 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-2000"></div>
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-4000"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div
-              className={cn(
-                "inline-block px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-8 opacity-0 animate-on-scroll",
-                isRTL ? "font-arabic" : ""
+            {/* Chip */}
+            <div className={cn(
+              "inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-6 animate-fade-in-up",
+              isRTL ? "flex-row-reverse" : "flex-row"
+            )}>
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              {isRTL ? (
+                <ArabicText size="sm" weight="medium">
+                  {t('contact.chip')}
+                </ArabicText>
+              ) : (
+                <span>{t('contact.chip')}</span>
               )}
-              style={{
-                fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-              }}
-              aria-label={t('contact.chip')}
-            >
-              {t('contact.chip')}
             </div>
 
-            <h1
-              className={cn(
-                "text-4xl md:text-6xl font-bold mb-6 opacity-0 animate-on-scroll",
-                isRTL ? "font-arabic" : ""
-              )}
-              style={{
-                animationDelay: "0.2s",
-                fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-              }}
-              id="hero-title"
-            >
-              {t('contact.title')}
-            </h1>
+            {/* Title */}
+            {isRTL ? (
+              <ArabicText
+                as="h1"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-gray-900"
+                size="4xl"
+                weight="bold"
+                align="center"
+              >
+                {t('contact.title')}
+              </ArabicText>
+            ) : (
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-gray-900">
+                {t('contact.title')}
+              </h1>
+            )}
 
-            <p
-              className={cn(
-                "text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto opacity-0 animate-on-scroll",
-                isRTL ? "font-arabic" : ""
-              )}
-              style={{
-                animationDelay: "0.4s",
-                fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-              }}
-              aria-labelledby="hero-title"
-            >
-              {t('contact.subtitle')}
-            </p>
+            {/* Subtitle */}
+            {isRTL ? (
+              <ArabicText
+                as="p"
+                className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4"
+                size="xl"
+                weight="normal"
+                align="center"
+              >
+                {t('contact.subtitle')}
+              </ArabicText>
+            ) : (
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+                {t('contact.subtitle')}
+              </p>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {features.map((feature, index) => (
-              <FeatureCard key={feature.title} {...feature} index={index} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Contact Section */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
 
-      {/* Main Contact Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="container px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
-            {/* Contact Form */}
-            <div
-              className="opacity-0 animate-on-scroll"
-              style={{ animationDelay: "0.8s" }}
-              role="region"
-              aria-labelledby="form-heading"
-            >
-              <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl">
-                <div className="mb-8">
-                  <h2
-                    id="form-heading"
-                    className={cn(
-                      "text-2xl md:text-3xl font-bold text-gray-900 mb-4",
-                      isRTL ? "font-arabic text-right" : "text-left"
-                    )}
-                    style={{
-                      fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-                    }}
+              {/* Contact Form */}
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 md:p-8 hover:shadow-xl transition-shadow duration-300">
+                {isRTL ? (
+                  <ArabicText
+                    as="h2"
+                    className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900"
+                    size="2xl"
+                    weight="bold"
                   >
-                    {isRTL ? "أرسل لنا رسالة" : "Send us a message"}
+                    {t('contact.sendMessageTitle')}
+                  </ArabicText>
+                ) : (
+                  <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900">
+                    {t('contact.sendMessageTitle')}
                   </h2>
+                )}
 
-                  <p
-                    className={cn(
-                      "text-gray-600",
-                      isRTL ? "font-arabic text-right" : "text-left"
+                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                  {/* Name Field */}
+                  <div className="space-y-2">
+                    {isRTL ? (
+                      <ArabicText as={Label} htmlFor="name" size="sm" weight="medium">
+                        {t('contact.form.name')}
+                      </ArabicText>
+                    ) : (
+                      <Label htmlFor="name">{t('contact.form.name')}</Label>
                     )}
-                    style={{
-                      fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-                    }}
-                  >
-                    {isRTL ? "سنتواصل معك في أقرب وقت ممكن" : "We'll get back to you as soon as possible"}
-                  </p>
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormInput
+                    <Input
                       id="name"
-                      name="name"
+                      type="text"
                       value={formData.name}
-                      onChange={handleChange}
+                      onChange={(e) => handleInputChange('name', e.target.value)}
+                      placeholder={t('contact.form.placeholders.name')}
+                      className={cn(
+                        "w-full form-field-focus transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-400",
+                        isRTL && "text-right font-arabic"
+                      )}
                       required
-                    >
-                      {t('contact.form.name')}
-                    </FormInput>
-
-                    <FormInput
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                    >
-                      {isRTL ? "رقم الهاتف" : "Phone Number"}
-                    </FormInput>
+                    />
                   </div>
 
-                  <FormInput
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  >
-                    {t('contact.form.email')}
-                  </FormInput>
+                  {/* Email Field */}
+                  <div className="space-y-2">
+                    {isRTL ? (
+                      <ArabicText as={Label} htmlFor="email" size="sm" weight="medium">
+                        {t('contact.form.email')}
+                      </ArabicText>
+                    ) : (
+                      <Label htmlFor="email">{t('contact.form.email')}</Label>
+                    )}
+                    <Input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      placeholder={t('contact.form.placeholders.email')}
+                      className="w-full form-field-focus transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-400"
+                      dir="ltr"
+                      required
+                    />
+                  </div>
 
-                  <FormSelect
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    required
-                  >
-                    {t('contact.form.service')}
-                  </FormSelect>
+                  {/* Service Field */}
+                  <div className="space-y-2">
+                    {isRTL ? (
+                      <ArabicText as={Label} htmlFor="service" size="sm" weight="medium">
+                        {t('contact.form.service')}
+                      </ArabicText>
+                    ) : (
+                      <Label htmlFor="service">{t('contact.form.service')}</Label>
+                    )}
+                    <Select value={formData.service} onValueChange={(value) => handleInputChange('service', value)}>
+                      <SelectTrigger className={cn("w-full form-field-focus transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-400", isRTL && "text-right font-arabic")}>
+                        <SelectValue placeholder={t('contact.form.selectService')} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="travel">
+                          {isRTL ? (
+                            <ArabicText size="sm">{t('contact.form.services.travel')}</ArabicText>
+                          ) : (
+                            t('contact.form.services.travel')
+                          )}
+                        </SelectItem>
+                        <SelectItem value="education">
+                          {isRTL ? (
+                            <ArabicText size="sm">{t('contact.form.services.education')}</ArabicText>
+                          ) : (
+                            t('contact.form.services.education')
+                          )}
+                        </SelectItem>
+                        <SelectItem value="trade">
+                          {isRTL ? (
+                            <ArabicText size="sm">{t('contact.form.services.trade')}</ArabicText>
+                          ) : (
+                            t('contact.form.services.trade')
+                          )}
+                        </SelectItem>
+                        <SelectItem value="general">
+                          {isRTL ? (
+                            <ArabicText size="sm">{t('contact.form.services.general')}</ArabicText>
+                          ) : (
+                            t('contact.form.services.general')
+                          )}
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-                  <FormTextArea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                  >
-                    {t('contact.form.message')}
-                  </FormTextArea>
+                  {/* Message Field */}
+                  <div className="space-y-2">
+                    {isRTL ? (
+                      <ArabicText as={Label} htmlFor="message" size="sm" weight="medium">
+                        {t('contact.form.message')}
+                      </ArabicText>
+                    ) : (
+                      <Label htmlFor="message">{t('contact.form.message')}</Label>
+                    )}
+                    <Textarea
+                      id="message"
+                      value={formData.message}
+                      onChange={(e) => handleInputChange('message', e.target.value)}
+                      placeholder={t('contact.form.placeholders.message')}
+                      className={cn(
+                        "w-full min-h-[120px] resize-none form-field-focus transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-400",
+                        isRTL && "text-right font-arabic"
+                      )}
+                      required
+                    />
+                  </div>
 
-                  <button
+                  {/* Submit Button */}
+                  <Button
                     type="submit"
                     disabled={isSubmitting}
                     className={cn(
-                      "w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2",
-                      isRTL ? "font-arabic space-x-reverse" : ""
+                      "w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-3 md:py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg",
+                      isRTL ? "flex-row-reverse" : "flex-row",
+                      isSubmitting && "cursor-not-allowed"
                     )}
-                    style={{
-                      fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-                    }}
-                    aria-busy={isSubmitting}
                   >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                        <span>{isRTL ? "جاري الإرسال..." : "Sending..."}</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5" />
-                        <span>{t('contact.form.submit')}</span>
-                      </>
+                    {!isSubmitting && <Send className={cn("w-4 h-4", isRTL ? "ml-2" : "mr-2")} />}
+                    {isSubmitting && (
+                      <div className={cn("w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin", isRTL ? "ml-2" : "mr-2")} />
                     )}
-                  </button>
-
-                  {submitStatus === 'success' && (
-                    <div
-                      className={cn(
-                        "flex items-center justify-center space-x-2 text-green-600 font-medium bg-green-50 p-4 rounded-xl",
-                        isRTL ? "font-arabic space-x-reverse" : ""
-                      )}
-                      style={{
-                        fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-                      }}
-                      role="alert"
-                    >
-                      <CheckCircle className="w-5 h-5" />
-                      <span>{t('contact.form.success')}</span>
-                    </div>
-                  )}
-
-                  {submitStatus === 'error' && (
-                    <div
-                      className={cn(
-                        "flex items-center justify-center space-x-2 text-red-600 font-medium bg-red-50 p-4 rounded-xl",
-                        isRTL ? "font-arabic space-x-reverse" : ""
-                      )}
-                      style={{
-                        fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-                      }}
-                      role="alert"
-                    >
-                      <X className="w-5 h-5" />
-                      <span>{t('contact.form.error')}</span>
-                    </div>
-                  )}
+                    {isRTL ? (
+                      <ArabicText size="sm" weight="medium">
+                        {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
+                      </ArabicText>
+                    ) : (
+                      <span>{isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}</span>
+                    )}
+                  </Button>
                 </form>
               </div>
-            </div>
 
-            {/* Contact Information */}
-            <div
-              className="opacity-0 animate-on-scroll"
-              style={{ animationDelay: "1s" }}
-              role="region"
-              aria-labelledby="info-heading"
-            >
+              {/* Contact Information */}
               <div className="space-y-8">
-                <div>
-                  <h2
-                    id="info-heading"
-                    className={cn(
-                      "text-2xl md:text-3xl font-bold text-gray-900 mb-6",
-                      isRTL ? "font-arabic text-right" : "text-left"
-                    )}
-                    style={{
-                      fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-                    }}
+                {isRTL ? (
+                  <ArabicText
+                    as="h2"
+                    className="text-xl md:text-2xl font-bold text-gray-900"
+                    size="2xl"
+                    weight="bold"
                   >
-                    {isRTL ? "معلومات التواصل" : "Contact Information"}
+                    {t('contact.contactInfoTitle')}
+                  </ArabicText>
+                ) : (
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-900">
+                    {t('contact.contactInfoTitle')}
                   </h2>
+                )}
+
+                <div className="space-y-4 md:space-y-6">
+                  {contactInfo.map((item, index) => {
+                    const IconComponent = item.icon;
+                    const content = (
+                      <div className={cn(
+                        "flex items-start gap-3 md:gap-4 p-4 md:p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl hover:from-blue-50 hover:to-blue-100 transition-all duration-300 border border-gray-100 hover:border-blue-200 hover:shadow-md",
+                        isRTL ? "flex-row-reverse text-right" : "flex-row text-left"
+                      )}>
+                        <div className="flex-shrink-0 p-2 bg-blue-100 rounded-lg">
+                          <IconComponent className="w-6 h-6 text-blue-600" />
+                        </div>
+                        <div className="flex-1">
+                          {isRTL ? (
+                            <>
+                              <ArabicText
+                                as="h3"
+                                className="font-semibold text-gray-900 mb-1"
+                                size="md"
+                                weight="semibold"
+                              >
+                                {item.label}
+                              </ArabicText>
+                              <ArabicText
+                                as="p"
+                                className="text-gray-600"
+                                size="sm"
+                                weight="normal"
+                              >
+                                {item.value}
+                              </ArabicText>
+                            </>
+                          ) : (
+                            <>
+                              <h3 className="font-semibold text-gray-900 mb-1">
+                                {item.label}
+                              </h3>
+                              <p className="text-gray-600">
+                                {item.value}
+                              </p>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    );
+
+                    return item.href ? (
+                      <a
+                        key={index}
+                        href={item.href}
+                        target={item.href.startsWith('http') ? '_blank' : undefined}
+                        rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="block contact-card"
+                      >
+                        {content}
+                      </a>
+                    ) : (
+                      <div key={index} className="contact-card">
+                        {content}
+                      </div>
+                    );
+                  })}
                 </div>
 
-                {contactInfo.map((info) => (
-                  <ContactInfoCard key={info.label} {...info} />
-                ))}
-
-                {/* Map Placeholder */}
-                <div className="bg-white rounded-2xl p-6 shadow-lg">
-                  <h3
-                    className={cn(
-                      "font-semibold text-gray-900 mb-4",
-                      isRTL ? "font-arabic text-right" : "text-left"
+                {/* Map placeholder */}
+                <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl h-48 md:h-64 flex items-center justify-center border border-gray-200 hover:shadow-md transition-shadow duration-300 cursor-pointer group">
+                  <div className="text-center">
+                    <div className="p-4 bg-white rounded-full shadow-md group-hover:shadow-lg transition-shadow duration-300 mb-4">
+                      <MapPin className="w-12 h-12 text-blue-600" />
+                    </div>
+                    {isRTL ? (
+                      <ArabicText
+                        as="p"
+                        className="text-gray-600 group-hover:text-blue-600 transition-colors duration-300"
+                        size="sm"
+                        weight="medium"
+                        align="center"
+                      >
+                        {t('contact.mapTitle')}
+                      </ArabicText>
+                    ) : (
+                      <p className="text-gray-600 group-hover:text-blue-600 transition-colors duration-300 font-medium">{t('contact.mapTitle')}</p>
                     )}
-                    style={{
-                      fontFamily: isRTL ? "'Cairo', 'Tajawal', 'Noto Kufi Arabic', sans-serif" : undefined
-                    }}
-                  >
-                    {isRTL ? "موقعنا" : "Our Location"}
-                  </h3>
-                  <div className="w-full h-48 bg-gray-200 rounded-xl flex items-center justify-center">
-                    <MapPin className="w-12 h-12 text-gray-400" aria-hidden="true" />
-                    <span className="sr-only">Our location map</span>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-12 md:py-16 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              {isRTL ? (
+                <ArabicText
+                  as="h2"
+                  className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+                  size="3xl"
+                  weight="bold"
+                  align="center"
+                >
+                  {t('faq:faq.title')}
+                </ArabicText>
+              ) : (
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  {t('faq:faq.title')}
+                </h2>
+              )}
+
+              {isRTL ? (
+                <ArabicText
+                  as="p"
+                  className="text-lg text-gray-600 max-w-2xl mx-auto"
+                  size="lg"
+                  weight="normal"
+                  align="center"
+                >
+                  {t('faq:faq.subtitle')}
+                </ArabicText>
+              ) : (
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  {t('faq:faq.subtitle')}
+                </p>
+              )}
+            </div>
+
+            {/* FAQ Items */}
+            <div className="space-y-4">
+              {(t('faq:faq.questions', { returnObjects: true }) as any[]).map((faq: any, index: number) => (
+                <div key={index} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-blue-300">
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className={cn(
+                      "w-full p-6 text-left bg-white hover:bg-blue-50 transition-all duration-200 flex items-center justify-between group faq-button",
+                      isRTL && "text-right"
+                    )}
+                  >
+                    {isRTL ? (
+                      <ArabicText
+                        as="span"
+                        className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors duration-200"
+                        size="md"
+                        weight="medium"
+                      >
+                        {faq.question}
+                      </ArabicText>
+                    ) : (
+                      <span className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors duration-200">{faq.question}</span>
+                    )}
+                    {openFAQ === index ? (
+                      <ChevronUp className="w-5 h-5 text-blue-500 group-hover:text-blue-600 transition-colors duration-200" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5 text-gray-500 group-hover:text-blue-500 transition-colors duration-200" />
+                    )}
+                  </button>
+                  {openFAQ === index && (
+                    <div className="px-6 pb-6 bg-white border-t border-gray-100 faq-content">
+                      {isRTL ? (
+                        <ArabicText
+                          as="p"
+                          className="text-gray-700 leading-relaxed"
+                          size="md"
+                          weight="normal"
+                        >
+                          {faq.answer}
+                        </ArabicText>
+                      ) : (
+                        <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>

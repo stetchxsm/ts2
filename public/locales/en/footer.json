@@ -1,0 +1,17 @@
+{
+  "footer": {
+    "description": "Dr White Group - Your gateway to global opportunities in travel, education, and international trade.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "contact": "Contact Info",
+    "followUs": "Follow Us",
+    "rights": "© 2025 Dr White Group. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Oops! Page not found",
+    "cta": "Return to Home"
+  }
+}

@@ -35,6 +35,14 @@ Dr White Group is a leading multi-service company specializing in:
 - Smooth animations and transitions
 - Accessibility-compliant components
 
+### 📞 Contact Page Features
+- **Comprehensive Contact Form** - Multi-field form with validation
+- **Service Selection** - Dropdown for different service types
+- **Contact Information Display** - Address, phone, email, and hours
+- **Interactive Elements** - Hover effects and animations
+- **Mobile Optimized** - Fully responsive design
+- **RTL Support** - Complete Arabic language support
+
 ### 🛠️ Technical Stack
 - **React 18** with TypeScript
 - **Vite** for fast development and building
@@ -42,6 +50,12 @@ Dr White Group is a leading multi-service company specializing in:
 - **shadcn/ui** for consistent UI components
 - **react-i18next** for internationalization
 - **Lucide React** for icons
+- **Radix UI** for form components
+
+### 📄 Available Pages
+- **Home (/)** - Main landing page with all services
+- **Contact (/contact)** - Comprehensive contact form and information
+- **404 Page** - Custom not found page
 
 ## Development
 
@@ -118,10 +132,25 @@ src/
 └── ...
 
 public/
-├── drwhite-logo.svg    # Company logo
-├── locales/            # Translation files
+├── DWLOGO.png          # Company logo (PNG)
+├── DWLOGO2.svg         # Company logo (SVG)
+├── locales/            # Translation files (organized by namespaces)
 │   ├── en/            # English translations
-│   └── ar/            # Arabic translations
+│   │   ├── common.json      # Navigation, app info, shared elements
+│   │   ├── hero.json        # Hero section content
+│   │   ├── services.json    # Services, testimonials, newsletter
+│   │   ├── about.json       # About page and company info
+│   │   ├── contact.json     # Contact forms and information
+│   │   ├── footer.json      # Footer content and 404 page
+│   │   └── faq.json         # Frequently asked questions
+│   └── ar/            # Arabic translations (same structure)
+│       ├── common.json
+│       ├── hero.json
+│       ├── services.json
+│       ├── about.json
+│       ├── contact.json
+│       ├── footer.json
+│       └── faq.json
 └── ...
 
 # Configuration files
@@ -164,9 +193,35 @@ The website supports both Arabic and English with:
 
 ### Adding Translations
 
-1. Add new keys to `locales/en/translation.json`
-2. Add corresponding Arabic translations to `locales/ar/translation.json`
-3. Use in components with `const { t } = useTranslation()`
+The translation system is organized into separate namespaces for better maintainability:
+
+**Available Namespaces:**
+- `common.json` - Navigation, app info, and shared elements
+- `hero.json` - Hero section content
+- `services.json` - Services, testimonials, newsletter, and related content
+- `about.json` - About page and company information
+- `contact.json` - Contact forms and information
+- `footer.json` - Footer content and 404 page
+- `faq.json` - Frequently asked questions
+
+**Adding New Translations:**
+1. Choose the appropriate namespace file in `locales/en/` and `locales/ar/`
+2. Add new keys to both language files
+3. Use in components with `const { t } = useTranslation('namespace')`
+4. For multiple namespaces: `const { t } = useTranslation(['namespace1', 'namespace2'])`
+5. Access cross-namespace keys with: `t('namespace:key')`
+
+**Examples:**
+```typescript
+// Single namespace
+const { t } = useTranslation('services');
+const title = t('services.title');
+
+// Multiple namespaces
+const { t } = useTranslation(['contact', 'common']);
+const appTitle = t('common:app.title');
+const contactTitle = t('contact.title');
+```
 
 ## Deployment
 

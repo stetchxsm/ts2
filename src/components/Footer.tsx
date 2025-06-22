@@ -31,7 +31,7 @@ const WhatsAppIcon = () => (
 );
 
 const Footer = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(['footer', 'common']);
   const location = useLocation();
   const isRTL = i18n.dir() === 'rtl';
 
@@ -80,7 +80,7 @@ const Footer = () => {
             )}>
               <img
                 src="/DWLOGO.png"
-                alt={t('app.title')}
+                alt={t('common:app.title')}
                 className="h-20 w-auto filter brightness-0 invert"
               />
             </div>

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 const Newsletter = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useTranslation('services');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,12 +37,12 @@ const Newsletter = () => {
               <span>{t('newsletter.chip')}</span>
             </div>
           </div>
-          
+
           <h2 className="text-5xl font-display font-bold mb-4 text-left">{t('newsletter.title')}</h2>
           <p className="text-xl text-gray-700 mb-10 text-left">
             {t('newsletter.subtitle')}
           </p>
-          
+
           <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 items-start md:items-center">
             <div className="relative flex-grow">
               <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder={t('newsletter.placeholder')} className="w-full px-6 py-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pulse-500 text-gray-700" required />

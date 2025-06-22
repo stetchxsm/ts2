@@ -4,7 +4,7 @@ import { Users } from "lucide-react";
 import ArabicText from "./ArabicText";
 
 const CentralAsiaSection = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation('services');
   const isRTL = i18n.dir() === 'rtl';
 
   const countries = t('centralAsia.countries', { returnObjects: true }) as Array<{

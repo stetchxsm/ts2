@@ -4,7 +4,7 @@ import { Palmtree } from "lucide-react";
 import ArabicText from "./ArabicText";
 
 const GulfCountriesSection = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation('services');
   const isRTL = i18n.dir() === 'rtl';
 
   const countries = t('gulfCountries.countries', { returnObjects: true }) as Array<{

@@ -11,7 +11,7 @@ import { languages } from "@/i18n";
 import { cn } from "@/lib/utils";
 
 export function LanguageSwitcher() {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation('common');
   const currentLanguage = i18n.language;
   const isRTL = i18n.dir() === 'rtl';
 
@@ -22,8 +22,8 @@ export function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           size="icon"
           className="hover:bg-accent hover:text-accent-foreground transition-colors"
           aria-label={t('language.select')}
@@ -32,7 +32,7 @@ export function LanguageSwitcher() {
           <span className="sr-only">{t('language.select')}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent 
+      <DropdownMenuContent
         align={isRTL ? "start" : "end"}
         className="min-w-[150px]"
         sideOffset={4}

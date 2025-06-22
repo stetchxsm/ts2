@@ -112,7 +112,7 @@ TestimonialCard.displayName = 'TestimonialCard';
 
 const Testimonials: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation();
+  const { t } = useTranslation('services');
   const [currentPage, setCurrentPage] = useState(0);
 
   // استخراج البيانات مع معالجة الأخطاء

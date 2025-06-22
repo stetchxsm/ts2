@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ className }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isLottieLoading, setIsLottieLoading] = useState(true);
 
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation('hero');
   const isRTL = i18n.dir() === 'rtl';
 
   // Check if device is mobile

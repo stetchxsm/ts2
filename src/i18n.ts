@@ -29,16 +29,16 @@ i18n
     debug: process.env.NODE_ENV === 'development',
     fallbackLng: 'en',
     supportedLngs: Object.keys(languages),
-    
-    // Define namespaces for better organization (optional)
-    ns: ['translation'],
-    defaultNS: 'translation',
-    
+
+    // Define namespaces for better organization
+    ns: ['common', 'hero', 'services', 'about', 'contact', 'footer', 'faq'],
+    defaultNS: 'common',
+
     // Backend configuration for loading translations
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
-    
+
     // Detection options
     detection: {
       order: ['localStorage', 'cookie', 'navigator'],
@@ -46,7 +46,7 @@ i18n
       lookupCookie: 'i18next',
       caches: ['localStorage', 'cookie'],
     },
-    
+
     interpolation: {
       escapeValue: false, // React already escapes values
     },
@@ -60,4 +60,4 @@ i18n.on('languageChanged', (lng) => {
   setDocumentDirection(lng);
 });
 
-export default i18n; 
+export default i18n;

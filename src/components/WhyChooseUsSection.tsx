@@ -9,14 +9,14 @@ const WhyChooseUsSection = () => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ticking = useRef(false);
   const lastScrollY = useRef(0);
-  const { t } = useTranslation();
+  const { t } = useTranslation('services');
 
-  // Card style similar to HumanoidSection
+  // Card style - simplified without slow animations
   const cardStyle = {
     height: '60vh',
     maxHeight: '600px',
     borderRadius: '20px',
-    transition: 'transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1)',
+    transition: 'transform 0.3s ease, opacity 0.3s ease',
     willChange: 'transform, opacity'
   };
 
@@ -82,10 +82,10 @@ const WhyChooseUsSection = () => {
             progress = Math.min(1, Math.max(0, Math.abs(sectionRect.top) / totalScrollDistance));
           }
 
-          // Determine which card should be visible based on progress
-          if (progress >= 0.66) {
+          // Determine which card should be visible based on progress - faster transitions
+          if (progress >= 0.6) {
             setActiveCardIndex(2);
-          } else if (progress >= 0.33) {
+          } else if (progress >= 0.3) {
             setActiveCardIndex(1);
           } else {
             setActiveCardIndex(0);
@@ -125,9 +125,7 @@ const WhyChooseUsSection = () => {
         <div className="container px-6 lg:px-8 mx-auto h-full flex flex-col">
           <div className="mb-2 md:mb-3">
             <div className="flex items-center gap-4 mb-2 md:mb-2 pt-8 sm:pt-6 md:pt-4">
-              <div className="inline-block px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium opacity-0 animate-fade-in" style={{
-                animationDelay: "0.1s"
-              }}>
+              <div className="inline-block px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium">
                 <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-600 text-white mr-2">✓</span>
                 <span>{t('whyChooseUs.chip')}</span>
               </div>
@@ -141,11 +139,11 @@ const WhyChooseUsSection = () => {
           <div ref={cardsContainerRef} className="relative flex-1 perspective-1000">
             {/* First Card - Expertise */}
             <div
-              className={`absolute inset-0 overflow-hidden shadow-xl ${isFirstCardVisible ? 'animate-card-enter' : ''}`}
+              className="absolute inset-0 overflow-hidden shadow-xl"
               style={{
                 ...cardStyle,
                 zIndex: 10,
-                transform: `translateY(${isFirstCardVisible ? '90px' : '200px'}) scale(0.9)`,
+                transform: `translateY(${isFirstCardVisible ? '60px' : '100px'}) scale(${isFirstCardVisible ? '0.95' : '0.9'})`,
                 opacity: isFirstCardVisible ? 0.9 : 0,
                 background: reasons[0].bgImage
               }}
@@ -172,11 +170,11 @@ const WhyChooseUsSection = () => {
 
             {/* Second Card - Global Network */}
             <div
-              className={`absolute inset-0 overflow-hidden shadow-xl ${isSecondCardVisible ? 'animate-card-enter' : ''}`}
+              className="absolute inset-0 overflow-hidden shadow-xl"
               style={{
                 ...cardStyle,
                 zIndex: 20,
-                transform: `translateY(${isSecondCardVisible ? activeCardIndex === 1 ? '55px' : '45px' : '200px'}) scale(0.95)`,
+                transform: `translateY(${isSecondCardVisible ? '30px' : '100px'}) scale(${isSecondCardVisible ? '0.98' : '0.9'})`,
                 opacity: isSecondCardVisible ? 1 : 0,
                 pointerEvents: isSecondCardVisible ? 'auto' : 'none',
                 background: reasons[1].bgImage
@@ -204,11 +202,11 @@ const WhyChooseUsSection = () => {
 
             {/* Third Card - Comprehensive Service */}
             <div
-              className={`absolute inset-0 overflow-hidden shadow-xl ${isThirdCardVisible ? 'animate-card-enter' : ''}`}
+              className="absolute inset-0 overflow-hidden shadow-xl"
               style={{
                 ...cardStyle,
                 zIndex: 30,
-                transform: `translateY(${isThirdCardVisible ? activeCardIndex === 2 ? '15px' : '0' : '200px'}) scale(1)`,
+                transform: `translateY(${isThirdCardVisible ? '0px' : '100px'}) scale(${isThirdCardVisible ? '1' : '0.9'})`,
                 opacity: isThirdCardVisible ? 1 : 0,
                 pointerEvents: isThirdCardVisible ? 'auto' : 'none',
                 background: reasons[2].bgImage

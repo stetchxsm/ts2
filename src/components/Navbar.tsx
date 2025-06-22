@@ -78,7 +78,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuOpenRef = useRef(isMenuOpen);
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation('common');
   const location = useLocation();
   const isRTL = i18n.dir() === 'rtl';
 
@@ -118,11 +118,12 @@ const Navbar = () => {
     };
   }, []);
 
-  // تنفيذ التنقل بدون setTimeout
+  // تنفيذ التنقل المحسن
   const handleNavigation = useCallback((href: string) => {
     setIsMenuOpen(false);
     document.body.style.overflow = '';
 
+    // Handle hash links on home page
     if (href.startsWith('#') && location.pathname === '/') {
       const element = document.querySelector(href);
       if (element) {
@@ -133,6 +134,11 @@ const Navbar = () => {
           behavior: 'smooth'
         });
       }
+    }
+    // Handle hash links from other pages - navigate to home first
+    else if (href.startsWith('#') && location.pathname !== '/') {
+      // Navigate to home page with hash
+      window.location.href = '/' + href;
     }
   }, [location.pathname]);
 
@@ -180,6 +186,13 @@ const Navbar = () => {
               onClick={() => handleNavigation("/")}
             >
               {t('navigation.home')}
+            </NavItem>
+            <NavItem
+              href="/about"
+              isActive={isActiveLink("/about")}
+              onClick={() => handleNavigation("/about")}
+            >
+              {t('navigation.about')}
             </NavItem>
             <NavItem
               href="#services"
@@ -247,6 +260,13 @@ const Navbar = () => {
             onClick={() => handleNavigation("/")}
           >
             {t('navigation.home')}
+          </MobileNavItem>
+          <MobileNavItem
+            href="/about"
+            isActive={isActiveLink("/about")}
+            onClick={() => handleNavigation("/about")}
+          >
+            {t('navigation.about')}
           </MobileNavItem>
           <MobileNavItem
             href="#services"

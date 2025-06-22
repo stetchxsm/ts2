@@ -1,0 +1,32 @@
+{
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to the most common questions about our services",
+    "questions": [
+      {
+        "question": "What services do you provide?",
+        "answer": "We offer three main services: Travel services (Hajj, Umrah, and Gulf country trips), Educational consulting for studying in Central Asia from our main office in Kyrgyzstan, and Import/Export services for Egyptian fruits."
+      },
+      {
+        "question": "Where is your main office located?",
+        "answer": "Our main office is located in Bishkek, the capital of Kyrgyzstan, in Oktyabrsky District, Maxim Gorky Street 21. We also have branches and agents worldwide."
+      },
+      {
+        "question": "How long does visa processing take?",
+        "answer": "Visa processing time varies depending on the destination and visa type. It usually takes 5-15 business days. We will inform you of the specific timeframe when you submit your application."
+      },
+      {
+        "question": "Do you provide post-travel support?",
+        "answer": "Yes, we provide ongoing support to our clients. For students, we offer academic follow-up and logistical support. For travelers, we provide emergency assistance and inquiry support."
+      },
+      {
+        "question": "What are your service costs?",
+        "answer": "Costs vary depending on the service type and required destination. We offer a free initial consultation to determine your needs and provide a detailed, customized quote."
+      },
+      {
+        "question": "How can I contact you in emergencies?",
+        "answer": "We provide a 24/7 emergency hotline for our traveling clients. You'll receive direct contact numbers when confirming your booking. You can also reach us via email or WhatsApp."
+      }
+    ]
+  }
+}

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Plane, GraduationCap, Ship } from "lucide-react";
 
 const ServicesSection = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('services');
 
   // Helper function to safely get features array
   const getFeatures = (key: string): string[] => {
